@@ -1,0 +1,95 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#container {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: white;
+    overflow: hidden;
+}
+
+#questionnaire {
+    width: 70%;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.5s ease-in-out;
+}
+
+#question {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #37474f;
+}
+
+#multiple-choice button {
+    display: block;
+    margin: 10px auto;
+    padding: 15px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4fc3f7;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#multiple-choice button:hover {
+    background-color: #039be5;
+}
+
+#question-list {
+    width: 30%;
+    background-color: #e0f7fa;
+    padding: 20px;
+    box-sizing: border-box;
+    border-right: 1px solid #b0bec5;
+}
+
+#question-list h3 {
+    margin-top: 0;
+    color: #00796b;
+}
+
+#questions-answered {
+    list-style-type: none;
+    padding: 0;
+}
+
+#questions-answered li {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #37474f;
+}
+
+#result {
+    font-size: 1.2em;
+    color: #00796b;
+    margin-top: 30px;
+}
+
+/* Slide effect for question transitions */
+#questionnaire.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#questionnaire.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+}
+}
