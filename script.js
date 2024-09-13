@@ -1,18 +1,18 @@
 let currentQuestion = 0;
 let habilitations = [];
 let currentIndice = null;  // Variable pour stocker l'indice actuel
-let employeeName = prompt("Veuillez entrer le nom du salarié :");
+let employeeNames = [];
 const questions = [
     {
-        question: "Le salarié est-il amené à pénétrer dans des locaux électriques / ouvrir des armoires électriques Basse Tension (<1000V), et/ou remplacer / installer des élements électriques tels que prises, ampoules luminaires interrupteurs etc ?", //0
+        question: "Le salarié est-il amené à intervenir sur des installations électriques ou seulement à proximité, sans intervenir directement ?", //0
         type: "multiple",
-        options: ["Oui", "Non"],
+        options: ["sur des installations électriques", "à proximité"],
 		hints: ["Accès aux locaux ou armoires électriques en basse tension", "Aucun accès aux locaux ou armoires électriques"],
-        result: ["B0", " "],
+        result: ["", "B0"],
         next: [1, 6]
     },
     {
-        question: "Le salarié est amené à remplacer / connecter / dépanner des éléments électriques en basse tension (BT) ?", //1
+        question: "Le salarié est-il amené à remplacer / dépanner / connecter / installer des éléments électriques en basse tension (BT) lors de travaux de construction / rénovation, au sein d'une équipe de plusieurs personnes ?", //1
         type: "multiple",
         options: ["Oui", "Non"],
 		hints: ["Effectue des opérations sur des équipements basse tension", "Ne fait aucune intervention sur des équipements basse tension"],
@@ -28,7 +28,7 @@ const questions = [
         next: [3, 4]
     },
     {
-        question: "Le salarié travaille-t-il dans des armoires a proximité d'elements électriques en fonctionnement?", //3
+        question: "Le salarié travaille-t-il dans des armoires électriques  a proximité d'elements électriques en fonctionnement?", //3
         type: "multiple",
         options: ["Oui", "Non"],
 				hints: ["hint"],
@@ -37,7 +37,7 @@ const questions = [
         next: [5, 5]
     },
     {
-        question: "Le salarié travaille-t-il dans des armoires a proximité d'elements électriques en fonctionnement?", //4
+        question: "Le salarié travaille-t-il dans des armoires électriques a proximité d'elements électriques en fonctionnement?", //4
        	type: "multiple",
         options: ["Oui", "Non"],
 				hints: ["hint"],
@@ -46,16 +46,16 @@ const questions = [
         next: [5, 5]
     },
     {
-        question: "Quel type d'intervention le salarié effectue-t-il sur des équipements ou circuits (BT) ?", //5
+        question: "Choisissez le type d'interventions que le salarié put effectuer dans la liste suivante:", //5
         type: "multiple",
-        options: ["Intervention générale", "Intervention élémentaire"],
+        options: ["Intervention générale sur tous type de circuits BT seul ou avec un exécutant sous ses ordres ", "Intervention élémentaire sur circuit de tension max 230 V de type prise de courant , interrupteurs, ou éléments de type luminaires, ampoules, radiateur "],
 				hints: ["hint"],
 
         result: ["BR", "BS"],
         next: [6, 6]
     },
     {
-        question: "Le salarié est il amené a manipuler des organes de coupure dans un tableau électrique (disjoncteurs, etc... ) concourant a l'exploitation?", //6
+        question: "Le salarié effectue-t-il des manœuvres, comme couper ou rétablir le courant dans des armoires électriques basse tension ?", //6
 		type: "multiple",
         options: ["Oui", "Non"],
 				hints: ["hint"],
@@ -64,7 +64,7 @@ const questions = [
         
     },
     {
-        question: "Le salarié effectue-t-il des consignations (BT) ?", //7
+        question: "Le salarié est-il responsable de la mise hors service des installations pour assurer la sécurité d'autres travailleurs intervenant sur l'installation (Consignation) ?", //7
         type: "multiple",
         options: ["Oui", "Non"],
 				hints: ["hint"],
@@ -73,7 +73,7 @@ const questions = [
         next: [8, 8]
     },
     {
-        question: "Le salarié doit il pénétrer dans des locaux de haute tension (>1000V) (postes de transformation etc ...) ?", //8
+        question: "Le salarié doit il pénétrer dans des locaux de haute tension (>1000V) (postes de transformation etc ...), ou travailler a proximité de réseaux de transport / distribution aériens de l'électricité ?", //8
         type: "multiple",
         options: ["Oui", "Non"],
 				hints: ["hint"],
@@ -82,7 +82,7 @@ const questions = [
         next: [9, 14]
     },
     {
-        question: "Le salarié agit-il en tant que non électricien de haute tension, exécutant électricien de haute tension ou agent de maitrise / cadre électricien de hzaute tension ?", //9
+        question: "Le salarié agit-il en tant que non électricien de haute tension, exécutant électricien de haute tension ou agent de maitrise / cadre électricien de haute tension ?", //9
         type: "multiple",
         options: ["Non Electricien", "Exécutant", "agent de Maîtrise / cadre"],
 				hints: ["hint"],
@@ -91,7 +91,7 @@ const questions = [
         next: [10, 11, 12]
     },
 	 {
-        question: "Le salarié travaille-t-il dans des armoires a proximité d'elements électriques en fonctionnement?", //10
+        question: "Le salarié travaille-t-il dans des installations de Haute Tension a proximité d'elements électriques en fonctionnement?", //10
        	type: "multiple",
         options: ["Oui", "Non"],
 				hints: ["hint"],
@@ -100,7 +100,7 @@ const questions = [
         next: [13, 13]
     },
     {
-        question: "Le salarié travaille-t-il dans des armoires a proximité d'elements électriques en fonctionnement?", //11
+        question: "Le salarié travaille-t-il dans des installations de Haute Tension a proximité d'elements électriques en fonctionnement?", //11
         	type: "multiple",
         options: ["Oui", "Non"],
 				hints: ["hint"],
@@ -109,7 +109,7 @@ const questions = [
         next: [13, 13]
     },
     {
-        question: "Le salarié travaille-t-il dans des armoires a proximité d'elements électriques en fonctionnement?", //12
+        question: "Le salarié travaille-t-il dans des installations de Haute Tension a proximité d'elements électriques en fonctionnement?", //12
        	type: "multiple",
         options: ["Oui", "Non"],
 				hints: ["hint"],
@@ -118,7 +118,7 @@ const questions = [
         next: [13, 13]
     },
     {
-        question: "Le salarié effectue-t-il des manœuvres (HT) ?", //13
+        question: "Le salarié effectue-t-il des manœuvres, comme couper ou rétablir le courant dans des locaux HT ?", //13
         options: ["Oui", "Non"],
 				hints: ["hint"],
 
@@ -126,7 +126,7 @@ const questions = [
         next: [14, 14]
     },
     {
-        question: "Le salarié effectue-t-il des consignations (HT) ?", //14
+        question: "Le salarié est-il responsable de la mise hors service des installations pour assurer la sécurité d'autres travailleurs intervenant sur des installations HT (Consignation) ?", //14
         type: "multiple",
         options: ["Oui", "Non"],
 				hints: ["hint"],
@@ -192,12 +192,46 @@ function answerMultiple(optionIndex) {
     }, 500);  // Durée de la transition
 }
 
-
 function displayResults() {
     document.getElementById("multiple-choice").style.display = "none";
     document.getElementById("question").style.display = "none";
-    document.getElementById("result").innerText = "Les habilitations nécessaires pour votre/vos salarié(s) sont : " + habilitations.join(", ");
+    document.getElementById("result").innerText = "Les habilitations nécessaires pour Mr / Mme "+ employeeNames +"  sont : " + habilitations.join(" ");
 }
 
-// Initialisation
+function startQuestionnaire() {
+	showDialog();
+    document.getElementById("accueil").style.display = "none"; // Masque la page d'accueil
+
+    // Affiche la boîte de dialogue personnalisée pour entrer les noms
+    const dialog = document.createElement('div');
+    dialog.id = 'dialog';
+    dialog.innerHTML = '';
+    document.body.appendChild(dialog);
+	
+   }
+function showDialog() {
+        document.getElementById('dialog').style.display = 'flex';
+    }
+
+    function closeDialog() {
+        document.getElementById('dialog').style.display = 'none';
+    }
+
+    function submitNames() {
+         const namesInput = document.getElementById('names-input').value;
+    if (namesInput) {
+        // Séparer les noms par des virgules et supprimer les espaces inutiles
+        employeeNames = namesInput.split(',').map(name => name.trim()).filter(name => name !== "");
+        
+        // Masquer la boîte de dialogue
+        document.getElementById('dialog').style.display = 'none';
+        
+        // Afficher le questionnaire
+        document.getElementById("questionnaire").style.display = "block";
+        
+        updateUI();  // Appelle la première question
+    }
+    }
+
+// Initialisation du questionnaire
 updateUI();
