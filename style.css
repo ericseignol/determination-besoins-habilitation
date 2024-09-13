@@ -116,3 +116,33 @@ button:hover {
 #dialog button:hover {
     background-color: #0056b3;
 }
+/* Pour les petits écrans (mobiles) */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 14px; /* Réduire légèrement la taille de police */
+    }
+
+    #accueil, #questionnaire {
+        padding: 10px;
+        margin: 10px auto; /* Réduire les marges */
+        max-width: 90%; /* S'assurer que la largeur est adaptée à l'écran */
+    }
+
+    h1, h2, p {
+        font-size: 1.1em; /* Ajuster la taille des titres et paragraphes */
+    }
+
+    button {
+        width: 100%; /* Les boutons prennent toute la largeur */
+        padding: 15px;
+        font-size: 16px; /* Taille de police adaptée pour les boutons */
+    }
+
+    #dialog {
+        width: 90%; /* Réduire la largeur de la boîte de dialogue sur mobile */
+    }
+
+    #dialog input {
+        width: 100%; /* Assurer que le champ de texte prend toute la largeur */
+    }
+}
