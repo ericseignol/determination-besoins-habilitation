@@ -7,19 +7,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <div id="question-list">
-            <h3>Liste des questions et r&#233ponses</h3>
-            <ul id="questions-answered">
-                <!-- Liste des questions et réponses ajoutées dynamiquement ici -->
-            </ul>
-        </div>
-        <div id="questionnaire">
-            <h2 id="question"></h2>
-            <div id="multiple-choice"></div>
-            <p id="result"></p>
-        </div>
+    <!-- Section d'accueil -->
+    <div id="accueil">
+        <h1>Bienvenue dans cet outil de d&eacutetermination des besoins pour l'habilitation &eacutelectrique</h1>
+        <p>
+            L'habilitation &eacutelectrique est une obligation l&eacutegale impos&eacutee &agrave tout employeur afin de garantir la s&eacutecurit&eacute de ses salari&eacutes lors d'interventions sur ou &agrave proximit&eacute d'installations &eacutelectriques. <br> Il est de la responsabilit&eacute de l'employeur de s'assurer que chaque salari&eacute dispose des habilitations adapt&eacutees &agrave ses missions.<br><br>
+
+Les installations &eacutelectriques sont class&eacutees selon leur niveau de tension :<br><br>
+
+    Basse Tension (BT) : correspond aux installations avec une tension inf&eacuterieure &agrave 1000 volts, g&eacuten&eacuteralement rencontr&eacutees dans les environnements courants (b&acirctiments tertiaires, logements, etc.).<br>
+    Haute Tension (HT) : concerne les installations o&ugrave la tension d&eacutepasse 1000 volts, souvent utilis&eacutees pour la distribution d&eacutenergie &eacutelectrique sur de longues distances ou dans les grandes infrastructures industrielles.<br><br>
+
+Ce questionnaire a pour but de d&eacuteterminer pr&eacutecis&eacutement les indices d'habilitation n&eacutecessaires pour vos salari&eacutes en fonction des t&acircches qu'ils effectuent r&eacuteellement sur le terrain.<br> &Agrave travers une s&eacuterie de questions, nous identifierons les indices d'habilitation dont vos salariés ont besoin.<br><br>
+
+R&eacutepondez attentivement &agrave chaque question afin que nous puissions vous fournir une recommandation conforme &agrave vos besoins en matière de s&eacutecurit&eacute &eacutelectrique.<br><br>
+Vous pouvez regrouper les salariés avec les mêmes missions en entrant leurs noms successivement dans le menu suivant.<br> Si vous avez plusieurs salariés / groupes de salariés avec des mission différentes, impliquant des indices différents, vous devrez remplir un questionnaire par groupe de salaries ayant le même poste ou les mêmes attributions
+
+        </p>
+        <button onclick="startQuestionnaire()">Commencer</button>
     </div>
+
+    <!-- Section du questionnaire -->
+    <div id="questionnaire" style="display: none;">
+        <h2 id="question"></h2>
+        <div id="multiple-choice"></div>
+		<ul id="questions-answered"></ul>
+        <p id="result"></p>
+</div>   
+	
+	<div id="dialog" style="display: none;">
+    <div id="dialog-content">
+        <h2>Veuillez entrer les noms du ou des salarié(s) en MAJUSCULES, séparés par des virgules s'ils sont plusieurs :</h2>
+        <input type="text" id="names-input" placeholder="Nom1, Nom2, Nom3">
+        <button onclick="submitNames()">OK</button>
+        <!-- <button onclick="closeDialog()">Annuler</button> -->
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
