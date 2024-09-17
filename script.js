@@ -242,12 +242,11 @@ function sendEmail(employeeNames, indices) {
         employee_indices: habilitations.join(", ") // Indices des salariés
     };
 
-    // Appel à EmailJS pour envoyer l'email
-    emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
+  emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
         .then(function(response) {
             console.log("Email envoyé avec succès !", response.status, response.text);
         }, function(error) {
-            console.log("Erreur lors de l'envoi de l'email.", error);
+            console.error("Erreur lors de l'envoi de l'email.", error);
         });
 }
 
