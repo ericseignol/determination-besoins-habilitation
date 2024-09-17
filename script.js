@@ -202,8 +202,11 @@ function displayResults() {
 }
 
 function startQuestionnaire() {
+	document.getElementById("accueil").style.display = "none"; // Masque la page d'accueil
+	document.getElementById("user-info").style.display = "block";
+	submitUserInfo();
 	showDialog();
-    document.getElementById("accueil").style.display = "none"; // Masque la page d'accueil
+    
     // Affiche la boîte de dialogue personnalisée pour entrer les noms
     const dialog = document.createElement('div');
     dialog.id = 'dialog';
