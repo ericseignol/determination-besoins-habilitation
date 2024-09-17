@@ -215,7 +215,7 @@ function submitUserInfo() {
     if (userName && companyName) {
         // Masque la section des informations utilisateur
         document.getElementById("user-info").style.display = "none";
-        
+        showDialog();
         // Affiche le questionnaire
         document.getElementById("questionnaire").style.display = "block";
         
