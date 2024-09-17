@@ -4,6 +4,8 @@ let currentIndice = null;  // Variable pour stocker l'indice actuel
 let employeeNames = [];
 let userName = "";
 let companyName = "";
+let contactMail ="";
+let contactPhone = "";
 const questions = [
     {
         question: "Le salarié est-il amené à intervenir sur des installations électriques ou seulement à proximité, sans intervenir directement ?", //0
@@ -210,9 +212,11 @@ function submitUserInfo() {
     // Récupérer les valeurs des champs
     userName = document.getElementById("userName").value;
     companyName = document.getElementById("companyName").value;
+    contactMail = document.getElementById("contactMail").value;
+    contactPhone = document.getElementById("contactPhone").value;
 
     // Vérifier que les champs ne sont pas vides
-    if (userName && companyName) {
+    if (userName && companyName && contactMail && contactPhone) {
         // Masque la section des informations utilisateur
         document.getElementById("user-info").style.display = "none";
         showDialog();
@@ -250,7 +254,7 @@ function sendEmail(employeeNames, indices) {
     // Préparer les données à envoyer par email
     let emailParams = {
         to_name: "Eric", // Nom du destinataire
-        from_name: "Nom de l'expéditeur", // Ton nom ou nom du système
+        from_name: userName + " " + companyName, // Ton nom ou nom du système
         employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
         employee_indices: habilitations.join(", ") // Indices des salariés
     };
