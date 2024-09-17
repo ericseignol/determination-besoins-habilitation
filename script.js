@@ -1,4 +1,4 @@
-iclet currentQuestion = 0;
+let currentQuestion = 0;
 let habilitations = [];
 let currentIndice = null;  // Variable pour stocker l'indice actuel
 let employeeNames = [];
