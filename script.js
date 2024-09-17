@@ -232,6 +232,23 @@ function showDialog() {
         updateUI();  // Appelle la première question
     }
     }
+function sendEmail(employeeNames, indices) {
+    // Préparer les données à envoyer par email
+    let emailParams = {
+        to_name: "Destinataire", // Nom du destinataire
+        from_name: "Nom de l'expéditeur", // Ton nom ou nom du système
+        employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
+        employee_indices: indices.join(", ") // Indices des salariés
+    };
+
+    // Appel à EmailJS pour envoyer l'email
+    emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
+        .then(function(response) {
+            console.log("Email envoyé avec succès !", response.status, response.text);
+        }, function(error) {
+            console.log("Erreur lors de l'envoi de l'email.", error);
+        });
+}
 
 // Initialisation du questionnaire
 updateUI();
