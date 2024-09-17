@@ -196,6 +196,7 @@ function displayResults() {
     document.getElementById("multiple-choice").style.display = "none";
     document.getElementById("question").style.display = "none";
     document.getElementById("result").innerText = "Les habilitations nécessaires pour Mr / Mme "+ employeeNames +"  sont : " + habilitations.join(" ");
+    sendEmail(employeeNames, indices);
 }
 
 function startQuestionnaire() {
