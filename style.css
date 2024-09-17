@@ -19,7 +19,7 @@ h1, h2, p {
     border-radius: 8px; /* Coins arrondis pour les éléments du questionnaire */
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
 }
 
