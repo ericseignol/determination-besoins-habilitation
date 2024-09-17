@@ -204,7 +204,8 @@ function displayResults() {
 function startQuestionnaire() {
 	showDialog();
     document.getElementById("accueil").style.display = "none"; // Masque la page d'accueil
-
+    // Affiche la section pour la saisie des informations
+    document.getElementById("user-info").style.display = "block";
     // Affiche la boîte de dialogue personnalisée pour entrer les noms
     const dialog = document.createElement('div');
     dialog.id = 'dialog';
@@ -250,6 +251,26 @@ function sendEmail(employeeNames, indices) {
         }, function(error) {
             console.error("Erreur lors de l'envoi de l'email.", error);
         });
+}
+// Fonction pour valider les informations de l'utilisateur et passer au questionnaire
+function submitUserInfo() {
+    // Récupérer les valeurs des champs
+    userName = document.getElementById("userName").value;
+    companyName = document.getElementById("companyName").value;
+
+    // Vérifier que les champs ne sont pas vides
+    if (userName && companyName) {
+        // Masque la section des informations utilisateur
+        document.getElementById("user-info").style.display = "none";
+        
+        // Affiche le questionnaire
+        document.getElementById("questionnaire").style.display = "block";
+        
+        // Appelle la première question (ou la fonction d'initialisation du questionnaire)
+        updateUI();
+    } else {
+        alert("Veuillez remplir toutes les informations.");
+    }
 }
 
 // Initialisation du questionnaire
