@@ -31,7 +31,11 @@ Rappel : Les installations &eacutelectriques sont class&eacutees selon leur nive
         <input type="text" id="userName" name="userName" placeholder="Entrez votre nom" required><br><br>
         <label for="companyName">Entreprise :</label><br>
         <input type="text" id="companyName" name="companyName" placeholder="Entrez le nom de votre entreprise" required><br><br>
-        <button type="button" onclick="submitUserInfo()">Valider</button>
+	<label for="contactMail">e-mail :</label><br>
+        <input type="text" id="contactMail" name="contactMail" placeholder="Entrez votre e-mail de contact" required><br><br>
+	<label for="contactPhone">e-mail :</label><br>
+        <input type="text" id="contactPhone" name="contactPhone" placeholder="Entrez votre numéro de téléphone" required><br><br>
+	<button type="button" onclick="submitUserInfo()">Valider</button>
     </form>
 </div>
 
@@ -46,10 +50,10 @@ Rappel : Les installations &eacutelectriques sont class&eacutees selon leur nive
 	<div id="dialog" style="display: none;">
     <div id="dialog-content">
         <h2>Veuillez entrer les noms du ou des salarié(s) en MAJUSCULES, séparés par des virgules s'ils sont plusieurs :</h2>
-	    Vous pouvez regrouper les salariés avec les mêmes missions en entrant leurs noms successivement dans le menu suivant.<br>
+	    Vous pouvez regrouper les salariés avec les mêmes missions.<br>
 	<p>
-		Si vous avez plusieurs salariés / groupes de salariés avec des mission différentes, impliquant des indices différents, 
-		vous devrez remplir un questionnaire par groupe de salaries ayant le même poste ou les mêmes attributions
+		Si vous avez plusieurs salariés / groupes de salariés avec des mission différentes, impliquant des indices d'habilitation différents, 
+		vous devrez remplir un questionnaire par groupe de salaries ayant le même poste ou les mêmes attributions.
        </p>
 		<input type="text" id="names-input" placeholder="Nom1, Nom2, Nom3">
         <button onclick="submitNames()">OK</button>
