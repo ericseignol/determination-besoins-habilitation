@@ -204,16 +204,27 @@ function displayResults() {
 function startQuestionnaire() {
 	document.getElementById("accueil").style.display = "none"; // Masque la page d'accueil
 	document.getElementById("user-info").style.display = "block";
-	submitUserInfo();
-	showDialog();
-    
-    // Affiche la boîte de dialogue personnalisée pour entrer les noms
-    const dialog = document.createElement('div');
-    dialog.id = 'dialog';
-    dialog.innerHTML = '';
-    document.body.appendChild(dialog);
-	
+		
    }
+function submitUserInfo() {
+    // Récupérer les valeurs des champs
+    userName = document.getElementById("userName").value;
+    companyName = document.getElementById("companyName").value;
+
+    // Vérifier que les champs ne sont pas vides
+    if (userName && companyName) {
+        // Masque la section des informations utilisateur
+        document.getElementById("user-info").style.display = "none";
+        
+        // Affiche le questionnaire
+        document.getElementById("questionnaire").style.display = "block";
+        
+        // Appelle la première question (ou la fonction d'initialisation du questionnaire)
+        updateUI();
+    } else {
+        alert("Veuillez remplir toutes les informations.");
+    }
+}
 function showDialog() {
         document.getElementById('dialog').style.display = 'flex';
     }
@@ -254,25 +265,7 @@ function sendEmail(employeeNames, indices) {
         });
 }
 // Fonction pour valider les informations de l'utilisateur et passer au questionnaire
-function submitUserInfo() {
-    // Récupérer les valeurs des champs
-    userName = document.getElementById("userName").value;
-    companyName = document.getElementById("companyName").value;
 
-    // Vérifier que les champs ne sont pas vides
-    if (userName && companyName) {
-        // Masque la section des informations utilisateur
-        document.getElementById("user-info").style.display = "none";
-        
-        // Affiche le questionnaire
-        document.getElementById("questionnaire").style.display = "block";
-        
-        // Appelle la première question (ou la fonction d'initialisation du questionnaire)
-        updateUI();
-    } else {
-        alert("Veuillez remplir toutes les informations.");
-    }
-}
 
 // Initialisation du questionnaire
 updateUI();
