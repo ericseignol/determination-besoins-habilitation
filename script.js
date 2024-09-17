@@ -196,7 +196,7 @@ function displayResults() {
     document.getElementById("multiple-choice").style.display = "none";
     document.getElementById("question").style.display = "none";
     document.getElementById("result").innerText = "Les habilitations nécessaires pour Mr / Mme "+ employeeNames +"  sont : " + habilitations.join(" ");
-    sendEmail(employeeNames, indices);
+    sendEmail(employeeNames, habilitations);
 }
 
 function startQuestionnaire() {
@@ -239,7 +239,7 @@ function sendEmail(employeeNames, indices) {
         to_name: "Destinataire", // Nom du destinataire
         from_name: "Nom de l'expéditeur", // Ton nom ou nom du système
         employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
-        employee_indices: indices.join(", ") // Indices des salariés
+        employee_indices: habilitations.join(", ") // Indices des salariés
     };
 
     // Appel à EmailJS pour envoyer l'email
