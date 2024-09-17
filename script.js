@@ -1,4 +1,4 @@
-let currentQuestion = 0;
+iclet currentQuestion = 0;
 let habilitations = [];
 let currentIndice = null;  // Variable pour stocker l'indice actuel
 let employeeNames = [];
@@ -236,7 +236,7 @@ function showDialog() {
 function sendEmail(employeeNames, indices) {
     // Préparer les données à envoyer par email
     let emailParams = {
-        to_name: "Destinataire", // Nom du destinataire
+        to_name: "Eric", // Nom du destinataire
         from_name: "Nom de l'expéditeur", // Ton nom ou nom du système
         employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
         employee_indices: habilitations.join(", ") // Indices des salariés
