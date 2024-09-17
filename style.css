@@ -66,6 +66,25 @@ button:hover {
     text-align: center;
     margin-top: 20px;
 }
+#user-info {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#user-info input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+}
+
 /* Styles pour la boîte de dialogue */
 #dialog {
     position: fixed;
