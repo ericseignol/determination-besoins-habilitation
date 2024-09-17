@@ -6,6 +6,8 @@ let userName = "";
 let companyName = "";
 let contactMail ="";
 let contactPhone = "";
+let answeredQuestions = []; // Tableau pour stocker les questions et réponses
+
 const questions = [
     {
         question: "Le salarié est-il amené à intervenir sur des installations électriques ou seulement à proximité, sans intervenir directement ?", //0
@@ -176,11 +178,11 @@ function answerMultiple(optionIndex) {
     currentIndice = question.result[optionIndex];  // Stocker l'indice sélectionné
     habilitations.push(currentIndice);
 
-    // Ajouter la question et la réponse à la liste
-    const answeredList = document.getElementById("questions-answered");
-    const listItem = document.createElement("li");
-    listItem.innerText = question.question + " - Réponse: " + question.options[optionIndex];
-    answeredList.appendChild(listItem);
+     // Ajouter la question et la réponse au tableau answeredQuestions
+    answeredQuestions.push({
+        question: question.question,
+        answer: question.options[optionIndex]
+    });
 
     // Mettre à jour la question suivante avant la transition
     currentQuestion = question.next[optionIndex];
@@ -200,6 +202,17 @@ function displayResults() {
     document.getElementById("multiple-choice").style.display = "none";
     document.getElementById("question").style.display = "none";
     document.getElementById("result").innerText = "Les habilitations nécessaires pour Mr / Mme "+ employeeNames +"  sont : " + habilitations.join(" ");
+    // Afficher les questions et réponses
+    const answeredList = document.getElementById("questions-answered");
+    answeredList.innerHTML = ""; // Vider la liste avant de l'afficher
+
+    answeredQuestions.forEach(item => {
+        const listItem = document.createElement("li");
+        listItem.innerText = item.question + " - Réponse: " + item.answer;
+        answeredList.appendChild(listItem);
+    });
+
+    // Envoyer l'email
     sendEmail(employeeNames, habilitations);
 }
 
