@@ -217,7 +217,7 @@ function submitUserInfo() {
         document.getElementById("user-info").style.display = "none";
         showDialog();
         // Affiche le questionnaire
-        document.getElementById("questionnaire").style.display = "block";
+       // document.getElementById("questionnaire").style.display = "block";
         
         // Appelle la première question (ou la fonction d'initialisation du questionnaire)
         updateUI();
