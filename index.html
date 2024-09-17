@@ -23,6 +23,17 @@ Rappel : Les installations &eacutelectriques sont class&eacutees selon leur nive
         </p>
         <button onclick="startQuestionnaire()">Commencer</button>
     </div>
+	<!-- Section pour la saisie des informations de la personne et de l'entreprise -->
+<div id="user-info" style="display: none;">
+    <h2>Veuillez entrer vos informations</h2>
+    <form id="userForm">
+        <label for="userName">Nom :</label><br>
+        <input type="text" id="userName" name="userName" placeholder="Entrez votre nom" required><br><br>
+        <label for="companyName">Entreprise :</label><br>
+        <input type="text" id="companyName" name="companyName" placeholder="Entrez le nom de votre entreprise" required><br><br>
+        <button type="button" onclick="submitUserInfo()">Valider</button>
+    </form>
+</div>
 
     <!-- Section du questionnaire -->
     <div id="questionnaire" style="display: none;">
