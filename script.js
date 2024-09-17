@@ -2,6 +2,8 @@ iclet currentQuestion = 0;
 let habilitations = [];
 let currentIndice = null;  // Variable pour stocker l'indice actuel
 let employeeNames = [];
+let userName = "";
+let companyName = "";
 const questions = [
     {
         question: "Le salarié est-il amené à intervenir sur des installations électriques ou seulement à proximité, sans intervenir directement ?", //0
