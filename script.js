@@ -6,14 +6,17 @@ let userName = "";
 let companyName = "";
 let contactMail ="";
 let contactPhone = "";
-let answeredQuestions = []; // Tableau pour stocker les questions et réponses
+let affirmations = [];
 
 const questions = [
     {
         question: "Le salarié est-il amené à intervenir sur des installations électriques ou seulement à proximité, sans intervenir directement ?", //0
         type: "multiple",
         options: ["sur des installations électriques", "à proximité"],
-		hints: ["Accès aux locaux ou armoires électriques en basse tension", "Aucun accès aux locaux ou armoires électriques"],
+	answerAffirmative: [ 
+            "Le salarié intervient sur des installations électriques en basse tension.", 
+            "Le salarié n'intervient qu'à proximité des installations électriques."
+        ],
         result: ["", "B0"],
         next: [1, 6]
     },
@@ -178,11 +181,14 @@ function answerMultiple(optionIndex) {
     currentIndice = question.result[optionIndex];  // Stocker l'indice sélectionné
     habilitations.push(currentIndice);
 
-     // Ajouter la question et la réponse au tableau answeredQuestions
-    answeredQuestions.push({
-        question: question.question,
-        answer: question.options[optionIndex]
-    });
+   // Ajouter la question et la réponse sous forme affirmative à la liste
+    affirmations.push(question.answerAffirmative[optionIndex]);
+
+    // Stocker la question et réponse dans la liste pour l'afficher dans displayResults
+    const answeredList = document.getElementById("questions-answered");
+    const listItem = document.createElement("li");
+    listItem.innerText = question.options[optionIndex];
+    answeredList.appendChild(listItem);
 
     // Mettre à jour la question suivante avant la transition
     currentQuestion = question.next[optionIndex];
@@ -206,11 +212,10 @@ function displayResults() {
     const answeredList = document.getElementById("questions-answered");
     answeredList.innerHTML = ""; // Vider la liste avant de l'afficher
 
-    answeredQuestions.forEach(item => {
-        const listItem = document.createElement("li");
-        listItem.innerText = item.question + " - Réponse: " + item.answer;
-        answeredList.appendChild(listItem);
-    });
+   // Ajouter les affirmations
+    let affirmationsText = affirmations.join("<br>");
+    
+    document.getElementById("result").innerHTML = Synthèse des réponses : <br>" + affirmationsText;
 
     // Envoyer l'email
     sendEmail(employeeNames, habilitations);
