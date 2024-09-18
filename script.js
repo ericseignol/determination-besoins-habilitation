@@ -255,7 +255,7 @@ function displayResults() {
    // Ajouter les affirmations
     let affirmationsText = affirmations.join("<br>");
     
-    document.getElementById("result").innerHTML = Synthèse de vos réponses réponses : <br>" + affirmationsText;
+    document.getElementById("result").innerHTML = "Synthèse de vos réponses : <br>" + affirmationsText;
 
     // Envoyer l'email
     sendEmail(employeeNames, habilitations);
