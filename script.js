@@ -256,16 +256,7 @@ function displayResults() {
     let affirmationsText = affirmations.join("<br>");
     document.getElementById("questions-answered").innerHTML = "Merci de vos réponses, en voici une synthèse: <br><br>" + affirmationsText;
     
-    // Gestion de la logique pour les boutons Corriger et Valider
-    document.addEventListener('DOMContentLoaded', () => {
-        const confirmationSection = document.getElementById('confirmation-section');
-        const confirmationModal = document.getElementById('confirmation-modal');
-        const btnCorriger = document.getElementById('btn-corriger');
-        const btnValider = document.getElementById('btn-valider');
-        const modalCorriger = document.getElementById('modal-corriger');
-        const modalValider = document.getElementById('modal-valider');
-        
-        showConfirmationSection(); // S'assure d'afficher la section de confirmation
+    showConfirmationSection(); // S'assure d'afficher la section de confirmation
     });
 }
 
@@ -319,6 +310,14 @@ function showDialog() {
 	// Affiche les boutons Corriger / Valider à la fin du questionnaire
     function showConfirmationSection() {
         confirmationSection.style.display = 'block';
+	     document.addEventListener('DOMContentLoaded', () => {
+        const confirmationSection = document.getElementById('confirmation-section');
+        const confirmationModal = document.getElementById('confirmation-modal');
+        const btnCorriger = document.getElementById('btn-corriger');
+        const btnValider = document.getElementById('btn-valider');
+        const modalCorriger = document.getElementById('modal-corriger');
+        const modalValider = document.getElementById('modal-valider');        
+     });
     }
 
     // Fonction pour gérer la validation
