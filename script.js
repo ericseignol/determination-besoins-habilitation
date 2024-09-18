@@ -210,8 +210,7 @@ function updateUI() {
     question.options.forEach((option, index) => {
         let button = document.createElement("button");
         button.innerText = option;
-		button.title = question.hints[index];  // Ajouter l'info-bulle
-        button.onclick = () => answerMultiple(index); // Bind event
+	button.onclick = () => answerMultiple(index); // Bind event
         document.getElementById("multiple-choice").appendChild(button);
     });
 }
