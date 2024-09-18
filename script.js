@@ -320,8 +320,7 @@ function showConfirmationSection() {
 
     // Fonction pour gérer la validation
     btnValider.addEventListener('click', () => {
-        document.getElementById("result").innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues.<br>
-		Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais.";
+        document.getElementById("result").innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues.<br>Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais.";
     });
 
     // Fonction pour gérer le retour en arrière (corriger)
