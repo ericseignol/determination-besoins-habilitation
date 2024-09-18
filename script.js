@@ -332,9 +332,9 @@ function showConfirmationSection() {
         employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
         employee_indices: habilitations.join(" "), // Indices des salariés
 	message: affirmations.join(" "),
-	    console.log(userName + companyName);
+	
     };
-
+	console.log(companyName);
   emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
         .then(function(response) {
             console.log("Email envoyé avec succès !", response.status, response.text);
