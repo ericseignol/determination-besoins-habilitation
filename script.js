@@ -312,14 +312,15 @@ function showConfirmationSection() {
     const confirmationSection = document.getElementById('confirmation-section');
     confirmationSection.style.display = 'block'; 
     const confirmationModal = document.getElementById('confirmation-modal');
+    confirmationModal.style.display = 'block';  // Ouvre la modale pour confirmer
     const btnCorriger = document.getElementById('btn-corriger');
     const btnValider = document.getElementById('btn-valider');
-    const modalCorriger = document.getElementById('modal-corriger');
+    //const modalCorriger = document.getElementById('modal-corriger');
     const modalValider = document.getElementById('modal-valider');
 
     // Fonction pour gérer la validation
     btnValider.addEventListener('click', () => {
-        confirmationModal.style.display = 'block';  // Ouvre la modale pour confirmer
+        
     });
 
     // Fonction pour gérer le retour en arrière (corriger)
@@ -329,10 +330,10 @@ function showConfirmationSection() {
     });
 
     // Bouton Corriger dans la modale
-    modalCorriger.addEventListener('click', () => {
-        confirmationModal.style.display = 'none';  // Ferme la modale
-        console.log('Correction en cours');
-    });
+   // modalCorriger.addEventListener('click', () => {
+      //  confirmationModal.style.display = 'none';  // Ferme la modale
+      //  console.log('Correction en cours');
+   // });
 
     // Bouton Valider dans la modale (envoyer le questionnaire)
     modalValider.addEventListener('click', () => {
