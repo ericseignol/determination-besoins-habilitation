@@ -9,11 +9,11 @@ let contactPhone = "";
 let affirmations = [];
 
 const questions = [
-    {
+     {
         question: "Le salarié est-il amené à intervenir sur des installations électriques ou seulement à proximité, sans intervenir directement ?", //0
         type: "multiple",
         options: ["sur des installations électriques", "à proximité"],
-	answerAffirmative: [ 
+        answerAffirmative: [ 
             "Le salarié intervient sur des installations électriques en basse tension.", 
             "Le salarié n'intervient qu'à proximité des installations électriques."
         ],
@@ -24,87 +24,113 @@ const questions = [
         question: "Le salarié est-il amené à remplacer / dépanner / connecter / installer des éléments électriques en basse tension (BT) lors de travaux de construction / rénovation, au sein d'une équipe de plusieurs personnes ?", //1
         type: "multiple",
         options: ["Oui", "Non"],
-		hints: ["Effectue des opérations sur des équipements basse tension", "Ne fait aucune intervention sur des équipements basse tension"],
-        result: [" ", " "],
+        answerAffirmative: [
+            "Le salarié effectue des opérations sur des équipements basse tension.",
+            "Le salarié ne fait aucune intervention sur des équipements basse tension."
+        ],
+        result: ["", ""],
         next: [2, 6]
     },
- {
+    {
         question: "Le salarié agit-il en tant qu'exécutant ou agent de maitrise / cadre ?", //2
         type: "multiple",
         options: ["Exécutant", "agent de Maîtrise / cadre"],
-		hints: ["hint"],
-        result: [" ", " "],
+        answerAffirmative: [
+            "Le salarié agit en tant qu'exécutant.",
+            "Le salarié agit en tant qu'agent de maîtrise ou cadre."
+        ],
+        result: ["", ""],
         next: [3, 4]
     },
     {
-        question: "Le salarié travaille-t-il dans des armoires électriques  a proximité d'elements électriques en fonctionnement?", //3
+        question: "Le salarié travaille-t-il dans des armoires électriques à proximité d'éléments électriques en fonctionnement ?", //3
         type: "multiple",
         options: ["Oui", "Non"],
-				hints: ["hint"],
-
+        answerAffirmative: [
+            "Le salarié travaille dans des armoires électriques à proximité d'éléments en fonctionnement.",
+            "Le salarié ne travaille pas à proximité d'éléments électriques en fonctionnement."
+        ],
         result: ["B1V", "B1"],
         next: [5, 5]
     },
     {
-        question: "Le salarié travaille-t-il dans des armoires électriques a proximité d'elements électriques en fonctionnement?", //4
-       	type: "multiple",
+        question: "Le salarié travaille-t-il dans des armoires électriques à proximité d'éléments électriques en fonctionnement ?", //4
+        type: "multiple",
         options: ["Oui", "Non"],
-				hints: ["hint"],
-
+        answerAffirmative: [
+            "Le salarié travaille dans des armoires électriques à proximité d'éléments en fonctionnement.",
+            "Le salarié ne travaille pas à proximité d'éléments électriques en fonctionnement."
+        ],
         result: ["B2V", "B2"],
         next: [5, 5]
     },
     {
-        question: "Choisissez le type d'interventions que le salarié put effectuer dans la liste suivante:", //5
+        question: "Choisissez le type d'interventions que le salarié peut effectuer dans la liste suivante :", //5
         type: "multiple",
-        options: ["Intervention générale sur tous type de circuits BT seul ou avec un exécutant sous ses ordres ", "Intervention élémentaire sur circuit de tension max 230 V de type prise de courant , interrupteurs, ou éléments de type luminaires, ampoules, radiateur "],
-				hints: ["hint"],
-
+        options: [
+            "Intervention générale sur tout type de circuits BT seul ou avec un exécutant sous ses ordres.",
+            "Intervention élémentaire sur circuit de tension max 230 V, de type prise de courant, interrupteurs, ou éléments de type luminaires, ampoules, radiateur."
+        ],
+        answerAffirmative: [
+            "Le salarié effectue des interventions générales sur tous types de circuits BT.",
+            "Le salarié effectue des interventions élémentaires sur des circuits de faible tension."
+        ],
         result: ["BR", "BS"],
         next: [6, 6]
     },
     {
         question: "Le salarié effectue-t-il des manœuvres, comme couper ou rétablir le courant dans des armoires électriques basse tension ?", //6
-		type: "multiple",
+        type: "multiple",
         options: ["Oui", "Non"],
-				hints: ["hint"],
-        result: ["BE manoeuvre", " "],
+        answerAffirmative: [
+            "Le salarié effectue des manœuvres sur des armoires électriques basse tension.",
+            "Le salarié n'effectue aucune manœuvre sur des armoires électriques basse tension."
+        ],
+        result: ["BE manœuvre", ""],
         next: [7, 7]
-        
     },
     {
         question: "Le salarié est-il responsable de la mise hors service des installations pour assurer la sécurité d'autres travailleurs intervenant sur l'installation (Consignation) ?", //7
         type: "multiple",
         options: ["Oui", "Non"],
-				hints: ["hint"],
-
-        result: ["BC", " "],
+        answerAffirmative: [
+            "Le salarié est responsable de la mise hors service des installations pour la consignation.",
+            "Le salarié n'est pas responsable de la consignation."
+        ],
+        result: ["BC", ""],
         next: [8, 8]
     },
     {
-        question: "Le salarié doit il pénétrer dans des locaux de haute tension (>1000V) (postes de transformation etc ...), ou travailler a proximité de réseaux de transport / distribution aériens de l'électricité ?", //8
+        question: "Le salarié doit-il pénétrer dans des locaux de haute tension (>1000V) (postes de transformation, etc.), ou travailler à proximité de réseaux de transport/distribution aériens de l'électricité ?", //8
         type: "multiple",
         options: ["Oui", "Non"],
-				hints: ["hint"],
-
-        result: [" ", " "],
+        answerAffirmative: [
+            "Le salarié doit pénétrer dans des locaux de haute tension ou travailler à proximité de réseaux aériens.",
+            "Le salarié ne pénètre pas dans des locaux de haute tension et ne travaille pas à proximité de réseaux aériens."
+        ],
+        result: ["", ""],
         next: [9, 14]
     },
     {
-        question: "Le salarié agit-il en tant que non électricien de haute tension, exécutant électricien de haute tension ou agent de maitrise / cadre électricien de haute tension ?", //9
+        question: "Le salarié agit-il en tant que non-électricien de haute tension, exécutant électricien de haute tension ou agent de maîtrise/cadre électricien de haute tension ?", //9
         type: "multiple",
-        options: ["Non Electricien", "Exécutant", "agent de Maîtrise / cadre"],
-				hints: ["hint"],
-
-        result: ["H0", " ", " "],
+        options: ["Non Électricien", "Exécutant", "Agent de maîtrise/cadre"],
+        answerAffirmative: [
+            "Le salarié est un non-électricien de haute tension.",
+            "Le salarié est un exécutant électricien de haute tension.",
+            "Le salarié est un agent de maîtrise ou cadre électricien de haute tension."
+        ],
+        result: ["H0", "", ""],
         next: [10, 11, 12]
     },
-	 {
-        question: "Le salarié travaille-t-il dans des installations de Haute Tension a proximité d'elements électriques en fonctionnement?", //10
-       	type: "multiple",
+    {
+        question: "Le salarié travaille-t-il dans des installations de haute tension à proximité d'éléments électriques en fonctionnement ?", //10
+        type: "multiple",
         options: ["Oui", "Non"],
-				hints: ["hint"],
-
+        answerAffirmative: [
+            "Le salarié travaille à proximité d'éléments électriques en fonctionnement dans des installations de haute tension.",
+            "Le salarié ne travaille pas à proximité d'éléments électriques en fonctionnement dans des installations de haute tension."
+        ],
         result: ["H0V", "H0"],
         next: [13, 13]
     },
@@ -112,7 +138,10 @@ const questions = [
         question: "Le salarié travaille-t-il dans des installations de Haute Tension a proximité d'elements électriques en fonctionnement?", //11
         	type: "multiple",
         options: ["Oui", "Non"],
-				hints: ["hint"],
+	answerAffirmative: [
+            "Le salarié travaille à proximité d'éléments électriques en fonctionnement dans des installations de haute tension.",
+            "Le salarié ne travaille pas à proximité d'éléments électriques en fonctionnement dans des installations de haute tension."
+        ],
 
         result: ["H1V", "H1"],
         next: [13, 13]
@@ -121,33 +150,44 @@ const questions = [
         question: "Le salarié travaille-t-il dans des installations de Haute Tension a proximité d'elements électriques en fonctionnement?", //12
        	type: "multiple",
         options: ["Oui", "Non"],
-				hints: ["hint"],
+	answerAffirmative: [
+            "Le salarié travaille à proximité d'éléments électriques en fonctionnement dans des installations de haute tension.",
+            "Le salarié ne travaille pas à proximité d'éléments électriques en fonctionnement dans des installations de haute tension."
+        ],
 
         result: ["H2V", "H2"],
         next: [13, 13]
     },
     {
-        question: "Le salarié effectue-t-il des manœuvres, comme couper ou rétablir le courant dans des locaux HT ?", //13
+            question: "Le salarié effectue-t-il des manœuvres, comme couper ou rétablir le courant dans des locaux HT ?", //13
         options: ["Oui", "Non"],
-				hints: ["hint"],
-
-        result: ["HE manoeuvre", " "],
+        answerAffirmative: [
+            "Le salarié effectue des manœuvres sur des installations de haute tension.",
+            "Le salarié n'effectue aucune manœuvre sur des installations de haute tension."
+        ],
+        result: ["HE manœuvre", ""],
         next: [14, 14]
     },
     {
         question: "Le salarié est-il responsable de la mise hors service des installations pour assurer la sécurité d'autres travailleurs intervenant sur des installations HT (Consignation) ?", //14
         type: "multiple",
         options: ["Oui", "Non"],
-				hints: ["hint"],
+	answerAffirmative: [
+        "Le salarié est responsable de la mise hors service des installations pour assurer la sécurité des autres travailleurs (Consignation HT).",
+        "Le salarié n'est pas responsable de la consignation des installations HT."
+    ],
 
         result: ["HC", " "],
         next: [15, 15]
     },
     {
-        question: "Le salarié travaille-t-il dans des tranchées de réseaux enterrés ?", //15
+        q question: "Le salarié travaille-t-il dans des tranchées de réseaux enterrés ?", //15
         type: "multiple",
         options: ["Oui", "Non"],
-		hints: ["hint"],
+        answerAffirmative: [
+            "Le salarié travaille dans des tranchées de réseaux enterrés.",
+            "Le salarié ne travaille pas dans des tranchées de réseaux enterrés."
+        ],
         result: ["BF/HF", ""],
         next: ["Fin", "Fin"]
     }
@@ -215,7 +255,7 @@ function displayResults() {
    // Ajouter les affirmations
     let affirmationsText = affirmations.join("<br>");
     
-    document.getElementById("result").innerHTML = Synthèse des réponses : <br>" + affirmationsText;
+    document.getElementById("result").innerHTML = Synthèse de vos réponses réponses : <br>" + affirmationsText;
 
     // Envoyer l'email
     sendEmail(employeeNames, habilitations);
