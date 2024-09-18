@@ -254,7 +254,7 @@ function displayResults() {
    // Ajouter les affirmations
     let affirmationsText = affirmations.join("<br>");
     
-    document.getElementById("questions-answered").innerHTML = "Synthèse de vos réponses : <br><br>" + affirmationsText;
+    document.getElementById("questions-answered").innerHTML = "Merci de vos réponses, en voici une synthèse: <br><br>" + affirmationsText +"<br><br> Un mail récapitulatif vous a été envoyé à l'adresse de contact que vous avez fourni,<br> et vos informations nous ont été transmises, nous reviendrons vers vous dans les meilleurs délai,;
 
     // Envoyer l'email
     sendEmail(employeeNames, habilitations);
@@ -324,8 +324,6 @@ function sendEmail(employeeNames, indices) {
             console.error("Erreur lors de l'envoi de l'email.", error);
         });
 }
-// Fonction pour valider les informations de l'utilisateur et passer au questionnaire
-
 
 // Initialisation du questionnaire
 updateUI();
