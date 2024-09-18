@@ -327,7 +327,8 @@ function showConfirmationSection() {
 	    // Préparer les données à envoyer par email
     let emailParams = {
         to_name: "Eric", // Nom du destinataire
-        from_name: userName + " de l'entreprise " + companyName, // Ton nom ou nom du système
+        from_name: userName,
+	companyName: companyName,
         employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
         employee_indices: habilitations.join(" "), // Indices des salariés
 	message: affirmations.join(" "),
