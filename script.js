@@ -279,7 +279,7 @@ function submitUserInfo() {
         showDialog();
             
         // Appelle la première question (ou la fonction d'initialisation du questionnaire)
-        updateUI();
+        //updateUI();
     } else {
         alert("Veuillez remplir toutes les informations.");
     }
