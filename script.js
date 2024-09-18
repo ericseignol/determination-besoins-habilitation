@@ -246,7 +246,7 @@ function answerMultiple(optionIndex) {
 function displayResults() {
     document.getElementById("multiple-choice").style.display = "none";
     document.getElementById("question").style.display = "none";
-    document.getElementById("result").innerText = "Les habilitations nécessaires pour Mr / Mme " + employeeNames + " sont : " + habilitations.join(" ");
+    document.getElementById("result").innerText = "Les habilitations nécessaires pour Mr / Mme " + employeeNames.join(", ") + " sont : " + habilitations.join(" ");
     
     // Afficher les questions et réponses
     const answeredList = document.getElementById("questions-answered");
@@ -256,9 +256,9 @@ function displayResults() {
     let affirmationsText = affirmations.join("<br>");
     document.getElementById("questions-answered").innerHTML = "Merci de vos réponses, en voici une synthèse: <br><br>" + affirmationsText;
     
-    showConfirmationSection(); // S'assure d'afficher la section de confirmation
-    });
+    showConfirmationSection();  // Affiche la section de confirmation
 }
+
 
 function startQuestionnaire() {
     document.getElementById("accueil").style.display = "none"; // Masque la page d'accueil
@@ -308,17 +308,14 @@ function showDialog() {
     }
     }
 	// Affiche les boutons Corriger / Valider à la fin du questionnaire
-    function showConfirmationSection() {
-        confirmationSection.style.display = 'block';
-	     document.addEventListener('DOMContentLoaded', () => {
-        const confirmationSection = document.getElementById('confirmation-section');
-        const confirmationModal = document.getElementById('confirmation-modal');
-        const btnCorriger = document.getElementById('btn-corriger');
-        const btnValider = document.getElementById('btn-valider');
-        const modalCorriger = document.getElementById('modal-corriger');
-        const modalValider = document.getElementById('modal-valider');        
-     });
-    }
+function showConfirmationSection() {
+    const confirmationSection = document.getElementById('confirmation-section');
+    confirmationSection.style.display = 'block'; 
+    const confirmationModal = document.getElementById('confirmation-modal');
+    const btnCorriger = document.getElementById('btn-corriger');
+    const btnValider = document.getElementById('btn-valider');
+    const modalCorriger = document.getElementById('modal-corriger');
+    const modalValider = document.getElementById('modal-valider');
 
     // Fonction pour gérer la validation
     btnValider.addEventListener('click', () => {
@@ -327,7 +324,6 @@ function showDialog() {
 
     // Fonction pour gérer le retour en arrière (corriger)
     btnCorriger.addEventListener('click', () => {
-        // Logique pour retourner en arrière dans les questions
         console.log('Retour à la question précédente pour correction');
         confirmationSection.style.display = 'none';  // Masque la section de confirmation
     });
@@ -336,15 +332,15 @@ function showDialog() {
     modalCorriger.addEventListener('click', () => {
         confirmationModal.style.display = 'none';  // Ferme la modale
         console.log('Correction en cours');
-        // Logique de retour en arrière ou modification
     });
 
     // Bouton Valider dans la modale (envoyer le questionnaire)
     modalValider.addEventListener('click', () => {
         confirmationModal.style.display = 'none';  // Ferme la modale
-        console.log('Questionnaire envoyé');  // Logique pour envoyer le questionnaire
-        // Appel à une fonction d'envoi de questionnaire ici
+        console.log('Questionnaire envoyé');
     });
+}
+
 
 
 
