@@ -265,7 +265,7 @@ function displayResults() {
     const modalValider = document.getElementById('modal-valider');
 	showConfirmationSection();    
 }
-}
+
 
 function startQuestionnaire() {
 	document.getElementById("accueil").style.display = "none"; // Masque la page d'accueil
