@@ -321,19 +321,30 @@ function showConfirmationSection() {
     // Fonction pour gérer la validation
     btnValider.addEventListener('click', () => {
         document.getElementById("result").innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues.<br>Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais.";
+	sendEmail();    
     });
 
     // Fonction pour gérer le retour en arrière (corriger)
-    btnCorriger.addEventListener('click', () => {
-        console.log('Retour à la question précédente pour correction');
-        confirmationSection.style.display = 'none';  // Masque la section de confirmation
-	    updateUI();  // Appelle la première question
-    });
+   btnCorriger.addEventListener('click', () => {
+    console.log('Retour à la première question pour correction');
+    
+    // Réinitialiser les variables à leur état initial
+    currentQuestion = 0;  // Réinitialise à la première question
+    habilitations = [];   // Réinitialise la liste des habilitations
+    affirmations = [];    // Réinitialise la liste des affirmations
+    
+    confirmationSection.style.display = 'none';  // Masque la section de confirmation
+    document.getElementById("multiple-choice").style.display = "block";  // Réaffiche les choix multiples
+    document.getElementById("question").style.display = "block";  // Réaffiche la question
+    
+    updateUI();  // Appelle la première question
+});
+
 
     // Bouton Valider dans la modale 
     modalValider.addEventListener('click', () => {
         confirmationModal.style.display = 'none';  // Ferme la modale
-        console.log('Questionnaire envoyé');
+        console.log('ok');
     });
 }
 
