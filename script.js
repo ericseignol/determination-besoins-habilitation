@@ -364,31 +364,5 @@ function showConfirmationSection() {
         console.log('ok');
     });
 }
-
-
-
-
-function sendEmail(employeeNames, indices) {
-	 if (!employeeNames || employeeNames.length === 0) {
-        console.error("Les noms des employés ne sont pas définis.");
-        return;
-    }
-    // Préparer les données à envoyer par email
-    let emailParams = {
-        to_name: "Eric", // Nom du destinataire
-        from_name: userName + " de l'entreprise " + companyName, // Ton nom ou nom du système
-        employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
-        employee_indices: habilitations.join(", "), // Indices des salariés
-	message: affirmations.join("<br>"),
-    };
-
-  emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
-        .then(function(response) {
-            console.log("Email envoyé avec succès !", response.status, response.text);
-        }, function(error) {
-            console.error("Erreur lors de l'envoi de l'email.", error);
-        });
-}
-
 // Initialisation du questionnaire
 updateUI();
