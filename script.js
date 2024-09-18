@@ -248,8 +248,8 @@ function displayResults() {
     document.getElementById("question").style.display = "none";
     document.getElementById("result").innerText = "Les habilitations nécessaires pour Mr / Mme "+ employeeNames +"  sont : " + habilitations.join(" ");
     // Afficher les questions et réponses
-    const answeredList = document.getElementById("questions-answered");
-    answeredList.innerHTML = ""; // Vider la liste avant de l'afficher
+    //const answeredList = document.getElementById("questions-answered");
+    //answeredList.innerHTML = ""; // Vider la liste avant de l'afficher
 
    // Ajouter les affirmations
     let affirmationsText = affirmations.join("<br>");
@@ -311,9 +311,10 @@ function sendEmail(employeeNames, indices) {
     // Préparer les données à envoyer par email
     let emailParams = {
         to_name: "Eric", // Nom du destinataire
-        from_name: userName + " " + companyName, // Ton nom ou nom du système
+        from_name: userName + " de l'entreprise " + companyName, // Ton nom ou nom du système
         employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
-        employee_indices: habilitations.join(", ") // Indices des salariés
+        employee_indices: habilitations.join(", "), // Indices des salariés
+	message: affirmations.join("<br>"),
     };
 
   emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
