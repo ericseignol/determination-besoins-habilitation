@@ -297,7 +297,7 @@ function showDialog() {
     if (namesInput) {
         // Séparer les noms par des virgules et supprimer les espaces inutiles
         employeeNames = namesInput.split(',').map(name => name.trim()).filter(name => name !== "");
-        
+        console.log(employeeNames);
         // Masquer la boîte de dialogue
         document.getElementById('dialog').style.display = 'none';
         
@@ -352,6 +352,10 @@ function showConfirmationSection() {
 
 
 function sendEmail(employeeNames, indices) {
+	 if (!employeeNames || employeeNames.length === 0) {
+        console.error("Les noms des employés ne sont pas définis.");
+        return;
+    }
     // Préparer les données à envoyer par email
     let emailParams = {
         to_name: "Eric", // Nom du destinataire
