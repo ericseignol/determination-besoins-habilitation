@@ -309,6 +309,7 @@ function showDialog() {
     }
 	// Affiche les boutons Corriger / Valider à la fin du questionnaire
 function showConfirmationSection() {
+	console.log(employeeNames);
     const confirmationSection = document.getElementById('confirmation-section');
     confirmationSection.style.display = 'block'; 
     const confirmationModal = document.getElementById('confirmation-modal');
@@ -320,6 +321,7 @@ function showConfirmationSection() {
 
     // Fonction pour gérer la validation
     btnValider.addEventListener('click', () => {
+	    console.log(employeeNames);
        // document.getElementById("result").innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues.<br>Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais.";
 	sendEmail();    
     });
