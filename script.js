@@ -328,10 +328,11 @@ function showConfirmationSection() {
     let emailParams = {
         to_name: "Eric", // Nom du destinataire
         from_name: userName,
-	companyName: companyName,
+	company_name: userName,
         employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
         employee_indices: habilitations.join(" "), // Indices des salariés
 	message: affirmations.join(" "),
+	    console.log(userName,userName,);
     };
 
   emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
