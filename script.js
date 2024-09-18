@@ -322,8 +322,23 @@ function showConfirmationSection() {
     // Fonction pour gérer la validation
     btnValider.addEventListener('click', () => {
 	    console.log(employeeNames);
-       // document.getElementById("result").innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues.<br>Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais.";
-	sendEmail();    
+        document.getElementById("result").innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues.<br>Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais.";
+	//sendEmail();
+	    // Préparer les données à envoyer par email
+    let emailParams = {
+        to_name: "Eric", // Nom du destinataire
+        from_name: userName + " de l'entreprise " + companyName, // Ton nom ou nom du système
+        employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
+        employee_indices: habilitations.join(", "), // Indices des salariés
+	message: affirmations.join("<br>"),
+    };
+
+  emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
+        .then(function(response) {
+            console.log("Email envoyé avec succès !", response.status, response.text);
+        }, function(error) {
+            console.error("Erreur lors de l'envoi de l'email.", error);
+        });
     });
 
     // Fonction pour gérer le retour en arrière (corriger)
