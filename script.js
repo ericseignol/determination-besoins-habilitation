@@ -254,10 +254,16 @@ function displayResults() {
    // Ajouter les affirmations
     let affirmationsText = affirmations.join("<br>");
     
-    document.getElementById("questions-answered").innerHTML = "Merci de vos réponses, en voici une synthèse: <br><br>" + affirmationsText +"<br><br> Un mail récapitulatif vous a été envoyé à l'adresse de contact que vous avez fourni,<br> et vos informations nous ont été transmises, nous reviendrons vers vous dans les meilleurs délais";
-
-    // Envoyer l'email
-    sendEmail(employeeNames, habilitations);
+    document.getElementById("questions-answered").innerHTML = "Merci de vos réponses, en voici une synthèse: <br><br>" + affirmationsText 
+// Gestion de la logique pour les boutons Corriger et Valider
+    document.addEventListener('DOMContentLoaded', () => {
+    const confirmationSection = document.getElementById('confirmation-section');
+    const confirmationModal = document.getElementById('confirmation-modal');
+    const btnCorriger = document.getElementById('btn-corriger');
+    const btnValider = document.getElementById('btn-valider');
+    const modalCorriger = document.getElementById('modal-corriger');
+    const modalValider = document.getElementById('modal-valider');
+	showConfirmationSection();    
 }
 
 function startQuestionnaire() {
@@ -307,6 +313,39 @@ function showDialog() {
         updateUI();  // Appelle la première question
     }
     }
+	// Affiche les boutons Corriger / Valider à la fin du questionnaire
+    function showConfirmationSection() {
+        confirmationSection.style.display = 'block';
+    }
+
+    // Fonction pour gérer la validation
+    btnValider.addEventListener('click', () => {
+        confirmationModal.style.display = 'block';  // Ouvre la modale pour confirmer
+    });
+
+    // Fonction pour gérer le retour en arrière (corriger)
+    btnCorriger.addEventListener('click', () => {
+        // Logique pour retourner en arrière dans les questions
+        console.log('Retour à la question précédente pour correction');
+        confirmationSection.style.display = 'none';  // Masque la section de confirmation
+    });
+
+    // Bouton Corriger dans la modale
+    modalCorriger.addEventListener('click', () => {
+        confirmationModal.style.display = 'none';  // Ferme la modale
+        console.log('Correction en cours');
+        // Logique de retour en arrière ou modification
+    });
+
+    // Bouton Valider dans la modale (envoyer le questionnaire)
+    modalValider.addEventListener('click', () => {
+        confirmationModal.style.display = 'none';  // Ferme la modale
+        console.log('Questionnaire envoyé');  // Logique pour envoyer le questionnaire
+        // Appel à une fonction d'envoi de questionnaire ici
+    });
+
+
+
 function sendEmail(employeeNames, indices) {
     // Préparer les données à envoyer par email
     let emailParams = {
