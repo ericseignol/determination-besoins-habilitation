@@ -226,8 +226,8 @@ function answerMultiple(optionIndex) {
     // Stocker la question et réponse dans la liste pour l'afficher dans displayResults
     const answeredList = document.getElementById("questions-answered");
     const listItem = document.createElement("li");
-    listItem.innerText = question.options[optionIndex];
-    answeredList.appendChild(listItem);
+    //listItem.innerText = question.options[optionIndex];
+    //answeredList.appendChild(listItem);
 
     // Mettre à jour la question suivante avant la transition
     currentQuestion = question.next[optionIndex];
@@ -254,7 +254,7 @@ function displayResults() {
    // Ajouter les affirmations
     let affirmationsText = affirmations.join("<br>");
     
-    document.getElementById("result").innerHTML = "Synthèse de vos réponses : <br>" + affirmationsText;
+    document.getElementById("result").innerHTML = "Synthèse de vos réponses : <br><br>" + affirmationsText;
 
     // Envoyer l'email
     sendEmail(employeeNames, habilitations);
