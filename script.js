@@ -329,8 +329,8 @@ function showConfirmationSection() {
         to_name: "Eric", // Nom du destinataire
         from_name: userName + " de l'entreprise " + companyName, // Ton nom ou nom du système
         employee_names: employeeNames.join(", "), // Noms des salariés séparés par des virgules
-        employee_indices: habilitations.join(", "), // Indices des salariés
-	message: affirmations.join("<br>"),
+        employee_indices: habilitations.join(" "), // Indices des salariés
+	message: affirmations.join(" "),
     };
 
   emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
