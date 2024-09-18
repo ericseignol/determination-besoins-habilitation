@@ -254,7 +254,7 @@ function displayResults() {
    // Ajouter les affirmations
     let affirmationsText = affirmations.join("<br>");
     
-    document.getElementById("questions-answered").innerHTML = "Merci de vos réponses, en voici une synthèse: <br><br>" + affirmationsText +"<br><br> Un mail récapitulatif vous a été envoyé à l'adresse de contact que vous avez fourni,<br> et vos informations nous ont été transmises, nous reviendrons vers vous dans les meilleurs délai,;
+    document.getElementById("questions-answered").innerHTML = "Merci de vos réponses, en voici une synthèse: <br><br>" + affirmationsText +"<br><br> Un mail récapitulatif vous a été envoyé à l'adresse de contact que vous avez fourni,<br> et vos informations nous ont été transmises, nous reviendrons vers vous dans les meilleurs délais";
 
     // Envoyer l'email
     sendEmail(employeeNames, habilitations);
