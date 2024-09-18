@@ -181,7 +181,7 @@ const questions = [
         next: [15, 15]
     },
     {
-        q question: "Le salarié travaille-t-il dans des tranchées de réseaux enterrés ?", //15
+        question: "Le salarié travaille-t-il dans des tranchées de réseaux enterrés ?", //15
         type: "multiple",
         options: ["Oui", "Non"],
         answerAffirmative: [
