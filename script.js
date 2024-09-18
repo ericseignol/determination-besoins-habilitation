@@ -246,32 +246,34 @@ function answerMultiple(optionIndex) {
 function displayResults() {
     document.getElementById("multiple-choice").style.display = "none";
     document.getElementById("question").style.display = "none";
-    document.getElementById("result").innerText = "Les habilitations nécessaires pour Mr / Mme "+ employeeNames +"  sont : " + habilitations.join(" ");
+    document.getElementById("result").innerText = "Les habilitations nécessaires pour Mr / Mme " + employeeNames + " sont : " + habilitations.join(" ");
+    
     // Afficher les questions et réponses
     const answeredList = document.getElementById("questions-answered");
     answeredList.innerHTML = ""; // Vider la liste avant de l'afficher
 
-   // Ajouter les affirmations
+    // Ajouter les affirmations
     let affirmationsText = affirmations.join("<br>");
+    document.getElementById("questions-answered").innerHTML = "Merci de vos réponses, en voici une synthèse: <br><br>" + affirmationsText;
     
-    document.getElementById("questions-answered").innerHTML = "Merci de vos réponses, en voici une synthèse: <br><br>" + affirmationsText 
-// Gestion de la logique pour les boutons Corriger et Valider
+    // Gestion de la logique pour les boutons Corriger et Valider
     document.addEventListener('DOMContentLoaded', () => {
-    const confirmationSection = document.getElementById('confirmation-section');
-    const confirmationModal = document.getElementById('confirmation-modal');
-    const btnCorriger = document.getElementById('btn-corriger');
-    const btnValider = document.getElementById('btn-valider');
-    const modalCorriger = document.getElementById('modal-corriger');
-    const modalValider = document.getElementById('modal-valider');
-	showConfirmationSection();    
+        const confirmationSection = document.getElementById('confirmation-section');
+        const confirmationModal = document.getElementById('confirmation-modal');
+        const btnCorriger = document.getElementById('btn-corriger');
+        const btnValider = document.getElementById('btn-valider');
+        const modalCorriger = document.getElementById('modal-corriger');
+        const modalValider = document.getElementById('modal-valider');
+        
+        showConfirmationSection(); // S'assure d'afficher la section de confirmation
+    });
 }
 
-
 function startQuestionnaire() {
-	document.getElementById("accueil").style.display = "none"; // Masque la page d'accueil
-	document.getElementById("user-info").style.display = "block";
-		
-   }
+    document.getElementById("accueil").style.display = "none"; // Masque la page d'accueil
+    document.getElementById("user-info").style.display = "block"; // Affiche les infos utilisateur
+}
+
 function submitUserInfo() {
     // Récupérer les valeurs des champs
     userName = document.getElementById("userName").value;
