@@ -45,7 +45,25 @@ Rappel : Les installations &eacutelectriques sont class&eacutees selon leur nive
         <div id="multiple-choice"></div>
 		<ul id="questions-answered"></ul>
         <p id="result"></p>
-</div>   
+</div> 
+	<div id="questionnaire-container">
+  <!-- questions et réponses du questionnaire -->
+</div>
+
+<!-- Section pour les boutons Corriger et Valider -->
+<div id="confirmation-section" style="display: none;">
+  <button id="btn-corriger">Corriger</button>
+  <button id="btn-valider">Valider</button>
+</div>
+
+<!-- Modale de confirmation -->
+<div id="confirmation-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <p>Merci de relire vos réponses. Si vous souhaitez corriger, cliquez sur "Corriger", sinon, cliquez sur "Valider" pour envoyer le questionnaire.</p>
+    <button id="modal-corriger">Corriger</button>
+    <button id="modal-valider">Valider et envoyer</button>
+  </div>
+</div>
 	
 	<div id="dialog" style="display: none;">
     <div id="dialog-content">
