@@ -320,22 +320,18 @@ function showConfirmationSection() {
 
     // Fonction pour gérer la validation
     btnValider.addEventListener('click', () => {
-        
+        document.getElementById("result").innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues.<br>
+		Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais.";
     });
 
     // Fonction pour gérer le retour en arrière (corriger)
     btnCorriger.addEventListener('click', () => {
         console.log('Retour à la question précédente pour correction');
         confirmationSection.style.display = 'none';  // Masque la section de confirmation
+	    updateUI();  // Appelle la première question
     });
 
-    // Bouton Corriger dans la modale
-   // modalCorriger.addEventListener('click', () => {
-      //  confirmationModal.style.display = 'none';  // Ferme la modale
-      //  console.log('Correction en cours');
-   // });
-
-    // Bouton Valider dans la modale (envoyer le questionnaire)
+    // Bouton Valider dans la modale 
     modalValider.addEventListener('click', () => {
         confirmationModal.style.display = 'none';  // Ferme la modale
         console.log('Questionnaire envoyé');
