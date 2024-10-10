@@ -340,6 +340,28 @@ function showConfirmationSection() {
   emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
         .then(function(response) {
             console.log("Email envoyé avec succès !", response.status, response.text);
+	    // Masquer la modale et le bouton "Valider" et "Corriger"
+            confirmationModal.style.display = 'none';
+            btnValider.style.display = 'none';
+            btnCorriger.style.display = 'none';
+            
+            // Afficher le message de confirmation
+            const result = document.getElementById("result");
+            result.innerText = "Merci pour votre participation. Vous pouvez maintenant quitter cette page.";
+
+            // Créer et ajouter un bouton "Terminer"
+            const btnTerminer = document.createElement('button');
+            btnTerminer.innerText = "Terminer";
+            btnTerminer.style.marginTop = '20px';
+            
+            // Rediriger vers le site du client au clic
+            btnTerminer.addEventListener('click', () => {
+                window.location.href = 'https://www.asfor.net'; // Remplace par le lien réel
+            });
+
+            // Ajouter le bouton "Terminer" après le message
+            result.appendChild(btnTerminer);
+		
         }, function(error) {
             console.error("Erreur lors de l'envoi de l'email.", error);
         });
