@@ -347,7 +347,7 @@ function showConfirmationSection() {
             
             // Afficher le message de confirmation
             const result = document.getElementById("result");
-            result.innerText = "Merci pour votre participation. Vous pouvez maintenant quitter cette page.";
+            result.innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues. Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais.<br><br>Merci pour votre participation. Vous pouvez maintenant quitter cette page.";
 
             // Créer et ajouter un bouton "Terminer"
             const btnTerminer = document.createElement('button');
