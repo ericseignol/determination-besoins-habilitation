@@ -322,6 +322,10 @@ function showConfirmationSection() {
     // Fonction pour gérer la validation
     btnValider.addEventListener('click', () => {
 	    console.log(employeeNames);
+	     // Masquer la modale et le bouton "Valider" et "Corriger"
+            confirmationModal.style.display = 'none';
+            btnValider.style.display = 'none';
+            btnCorriger.style.display = 'none';
         document.getElementById("result").innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues. Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais.";
 	//sendEmail();
 	    // Préparer les données à envoyer par email
@@ -340,14 +344,9 @@ function showConfirmationSection() {
   emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
         .then(function(response) {
             console.log("Email envoyé avec succès !", response.status, response.text);
-	    // Masquer la modale et le bouton "Valider" et "Corriger"
-            confirmationModal.style.display = 'none';
-            btnValider.style.display = 'none';
-            btnCorriger.style.display = 'none';
-            
-            // Afficher le message de confirmation
+	    // Afficher le message de confirmation
             const result = document.getElementById("result");
-            result.innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues. Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais.<br><br>" + "Merci pour votre participation. Vous pouvez maintenant quitter cette page.";
+            result.innerText = "Un mail de confirmation vient de vous être envoyé, et vos informations nous sont parvenues. Nous reprendrons contact avec vous aux coordonées que vous avez fournies dans les meilleurs délais." + "Merci pour votre participation. Vous pouvez maintenant quitter cette page.";
 
             // Créer et ajouter un bouton "Terminer"
             const btnTerminer = document.createElement('button');
