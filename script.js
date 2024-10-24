@@ -181,7 +181,30 @@ const questions = [
         next: [15, 15]
     },
     {
-        question: "Le salarié travaille-t-il dans des tranchées de réseaux enterrés ?", //15
+        question: "Le salarié intervient il sur une installation photovoltaïque en courant continu et en courant alternatif ainsi que sur le raccordement au réseau de l'installation photovoltaïque ?", //15
+        type: "multiple",
+        options: ["Oui", "Non"],
+	answerAffirmative: [
+        "Le salarié intervient sur les interfaces entre courant continu et courant alternatif ainsi que sur le raccordement au réseau d'une installation photovoltaïque.",
+        "Le salarié n'intervient pas sur les interfaces entre courant continu et courant alternatif ni sur le raccordement au réseau d'une installation photovoltaïque."
+    ],
+	 result: ["BR-PV", " "],
+        next: [16, 16]
+    },
+    {
+        question: "Le salarié manipule-t-il ou pose-t-il des panneaux solaires photovoltaïques ?", //16
+        type: "multiple",
+        options: ["Oui", "Non"],
+	answerAffirmative: [
+        "Le salarié manipule et pose des panneaux photovoltaïques.",
+        "Le salarié me manipule pas ou ne pose pas de panneau solaire photovoltaïque."
+    ],
+
+        result: ["BP", " "],
+        next: [17, 17]
+    },
+    {
+        question: "Le salarié travaille-t-il dans des tranchées de réseaux enterrés ?", //17
         type: "multiple",
         options: ["Oui", "Non"],
         answerAffirmative: [
