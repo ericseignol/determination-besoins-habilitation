@@ -364,7 +364,7 @@ function showConfirmationSection() {
 	
     };
 	console.log(companyName);
-  emailjs.send("service_z2hpbbg", "template_zaes18r", emailParams)
+  emailjs.send("service_e9bef62", "template_zaes18r", emailParams)
         .then(function(response) {
             console.log("Email envoyé avec succès !", response.status, response.text);
 	    // Afficher le message de confirmation
