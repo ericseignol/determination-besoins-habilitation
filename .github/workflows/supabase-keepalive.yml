@@ -1,0 +1,48 @@
+name: Keep Supabase active
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    env:
+      KEEPALIVE_TOKEN: ${{ secrets.KEEPALIVE_TOKEN }}
+
+    steps:
+      - name: Query Supabase through the protected server endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${KEEPALIVE_TOKEN}" ]]; then
+            echo "Required keepalive secret is missing."
+            exit 1
+          fi
+
+          http_status="$(curl \
+            --silent \
+            --show-error \
+            --output /dev/null \
+            --write-out '%{http_code}' \
+            --connect-timeout 5 \
+            --max-time 15 \
+            --retry 2 \
+            --retry-all-errors \
+            --request POST \
+            --header "Authorization: Bearer ${KEEPALIVE_TOKEN}" \
+            --header "Accept: application/json" \
+            "https://qualification-habilitations.vercel.app/api/keepalive")"
+
+          if [[ "${http_status}" -lt 200 || "${http_status}" -ge 300 ]]; then
+            echo "Supabase keepalive failed with HTTP ${http_status}."
+            exit 1
+          fi
+
+          echo "Supabase keepalive succeeded with HTTP ${http_status}."
