@@ -1,6 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
 import { getAuthenticatedUser, getUserMembership } from "../server/auth.js";
 import { sendReceptionEmailVerification } from "../server/email.js";
+import { sendPlatformSignupAlert } from "../server/platform-alert.js";
 import {
   isRequestBodyTooLarge,
   isSameOriginRequest,
@@ -11,6 +12,15 @@ import {
   validateOrganizationPayload,
   validateOrganizationSettings,
 } from "../server/validation.js";
+
+async function notifySignupBestEffort(user, organization) {
+  try {
+    await sendPlatformSignupAlert({ userEmail: user.email, organization });
+  } catch (error) {
+    // Une panne Brevo ne doit pas empêcher la création du compte.
+    console.error("HabiliCible platform signup alert failed", error);
+  }
+}
 
 async function readBody(req) {
   if (req.body && typeof req.body === "object" && !Buffer.isBuffer(req.body)) {
@@ -250,6 +260,8 @@ export default async function handler(req, res) {
         });
         if (profileError) throw profileError;
 
+        await notifySignupBestEffort(user, claimedOrganization);
+
         return res.status(201).json({
           organization: serializeOrganization(claimedOrganization),
           warning: "",
@@ -310,6 +322,8 @@ export default async function handler(req, res) {
             "L’organisme est créé, mais le lien de vérification n’a pas pu être envoyé. Réessayez depuis les réglages.";
         }
       }
+
+      await notifySignupBestEffort(user, organization);
 
       return res.status(201).json({
         organization: serializeOrganization(
